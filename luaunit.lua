@@ -112,6 +112,23 @@ function _is_table_equals(actual, expected)
     return false
 end
 
+function assertClose(actual, expected, eps)
+	-- assert that two numeric values are within eps of one another, otherwise calls error
+	if  not(math.abs(actual - expected) < eps)  then
+
+		local errorMsg
+		if actual < expected - eps then
+      	errorMsg = "actual: "..wrapValue(actual).." < expected: "..wrapValue(expected - eps)
+      else
+         errorMsg = "actual: "..wrapValue(actual).." > expected: "..wrapValue(expected + eps)
+      end
+		print (errorMsg)
+		error( errorMsg, 2 )
+	end
+end
+
+assert_close = assertClose
+
 function assertEquals(actual, expected)
     if type(actual) == 'table' and type(expected) == 'table' then
         if not _is_table_equals(actual, expected) then
