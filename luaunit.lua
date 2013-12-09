@@ -118,11 +118,11 @@ function assertClose(actual, expected, eps)
 
 		local errorMsg
 		if actual < expected - eps then
-      	errorMsg = "actual: "..wrapValue(actual).." < expected: "..wrapValue(expected - eps)
+      	errorMsg = "actual: "..mytostring(actual).." < expected: "..mytostring(expected - eps)
       else
-         errorMsg = "actual: "..wrapValue(actual).." > expected: "..wrapValue(expected + eps)
+         errorMsg = "actual: "..mytostring(actual).." > expected: "..mytostring(expected + eps)
       end
-		print (errorMsg)
+--		print (errorMsg)
 		error( errorMsg, 2 )
 	end
 end
